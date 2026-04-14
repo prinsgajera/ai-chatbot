@@ -68,7 +68,10 @@ export class AuthService {
 
     return ResponseUtil.success(
       {
-        user: payload,
+        user: {
+          ...payload,
+          userName: user.userName,
+        },
         accessToken: this.jwtService.sign(payload),
       },
       'Login successfully',
